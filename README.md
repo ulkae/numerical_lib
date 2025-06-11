@@ -36,13 +36,17 @@ numerical_lib/
 
 Przykłady
 Każdy plik w katalogu examples/ to osobny program. Możesz je uruchomić np.:
+```
 ./example_interpolation
 ./example_linear_systems
 ./example_nonlinear
+```
 
 Projekt zawiera zestaw testów jednostkowych. Możesz je uruchomić np.:
+```
 ./test_interpolation
 ./test_ode_solver
+```
 
 Informacje dodatkowe
 Projekt stworzony z myślą o pełnej modularności (każdy plik niezależny).
