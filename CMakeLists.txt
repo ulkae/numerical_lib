@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.10)
+project(numerical_lib)
+set(CMAKE_CXX_STANDARD 17)
+
+include_directories(include)
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+add_library(numerical_lib ${SOURCES})
+
+file(GLOB EXAMPLES "examples/*.cpp")
+foreach(example ${EXAMPLES})
+    get_filename_component(exename ${example} NAME_WE)
+    add_executable(${exename} ${example})
+    target_link_libraries(${exename} numerical_lib)
+endforeach()
+
+file(GLOB TESTS "tests/*.cpp")
+foreach(testfile ${TESTS})
+    get_filename_component(testname ${testfile} NAME_WE)
+    add_executable(${testname} ${testfile})
+    target_link_libraries(${testname} numerical_lib)
+    add_test(NAME ${testname} COMMAND ${testname})
+endforeach()
