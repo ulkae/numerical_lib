@@ -20,13 +20,13 @@ Kompleksowa biblioteka metod numerycznych zaimplementowana w C++17. Projekt zost
 - CMake 3.10 lub nowszy
 
 ### Kompilacja Biblioteki
-
+```
 git clone https://github.com/ulkae/numerical_lib.git
 cd numerical_lib
 mkdir build && cd build
 cmake ..
 make
-
+```
 ### Uruchamianie Przykładów
 
 # Przykład interpolacji
