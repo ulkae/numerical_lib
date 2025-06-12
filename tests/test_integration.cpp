@@ -1,16 +1,36 @@
+ï»¿
+// test_integration.cpp - Uproszczone testy calkowania
 #include "integration.h"
 #include <cassert>
 #include <cmath>
 #include <iostream>
-
 using namespace std;
 
-int main() {
-    auto f = [](double x) { return x * x; }; // ca³ka z x^2 od 0 do 1 = 1/3
+void testPositiveCase() {
+    cout << "Test pozytywny - calkowanie x^2..." << endl;
+    auto f = [](double x) { return x * x; }; // calka z x^2 od 0 do 1 = 1/3
     double result = gaussLegendre(f, 0.0, 1.0, 3);
-
     assert(abs(result - 1.0 / 3.0) < 1e-6);
-    cout << "Test przeszedl pomyslnie. Wynik: " << result << endl;
+    cout << "Test pozytywny przeszedl! Wynik: " << result << endl;
+}
 
+void testNegativeCase() {
+    cout << "Test negatywny - nieprawidlowy rzad kwadratury..." << endl;
+    auto f = [](double x) { return x; };
+    
+    try {
+        double result = gaussLegendre(f, 0.0, 1.0, 5); // Nieobslugiwany n=5
+        cout << "BLAD: Powinien wystapic blad dla n=5!" << endl;
+    } catch (const exception& e) {
+        cout << "Poprawnie wykryto blad: " << e.what() << endl;
+    } catch (...) {
+        cout << "Poprawnie wykryto blad dla nieprawidlowego rzedu" << endl;
+    }
+}
+
+int main() {
+    testPositiveCase();
+    testNegativeCase();
+    cout << "Wszystkie testy calkowania zakonczone!" << endl;
     return 0;
 }
