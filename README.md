@@ -1,8 +1,8 @@
 # NumericalLib
 
-*Nowoczesna Biblioteka Metod Numerycznych w C++*
+**Nowoczesna Biblioteka Metod Numerycznych w C++**
 
-Kompleksowa biblioteka metod numerycznych zaimplementowana w C++17. Projekt został stworzony w ramach przedmiotu *Metody Numeryczne* i oferuje wydajne implementacje klasycznych algorytmów numerycznych. 
+Kompleksowa biblioteka metod numerycznych zaimplementowana w C++17. Projekt został stworzony w ramach przedmiotu **Metody Numeryczne** i oferuje wydajne implementacje klasycznych algorytmów numerycznych. 
 
 ## Funkcjonalności
 
@@ -20,15 +20,18 @@ Kompleksowa biblioteka metod numerycznych zaimplementowana w C++17. Projekt zost
 - CMake 3.10 lub nowszy
 
 ### Kompilacja Biblioteki
-```
+
+```bash
 git clone https://github.com/ulkae/numerical_lib.git
 cd numerical_lib
 mkdir build && cd build
 cmake ..
 make
 ```
+
 ### Uruchamianie Przykładów
 
+```bash
 # Przykład interpolacji
 ./example_interpolation
 
@@ -46,9 +49,11 @@ make
 
 # Metody aproksymacji
 ./example_approximation
+```
 
 ### Uruchamianie Testów
 
+```bash
 # Uruchom wszystkie testy
 make test
 
@@ -59,6 +64,7 @@ make test
 ./test_integration
 ./test_linear_systems
 ./test_nonlinear
+```
 
 ## Zaimplementowane Metody
 
@@ -72,6 +78,7 @@ make test
 | Równania Nieliniowe | Metoda Newtona-Raphsona | Znajdowanie pierwiastków z analitycznymi pochodnymi |
 
 ## Struktura Projektu
+
 ```
 numerical_lib/
 ├── include/              # Pliki nagłówkowe (*.h)
@@ -87,10 +94,12 @@ numerical_lib/
 ├── CMakeLists.txt        # Konfiguracja budowania
 └── README.md             # Ten plik
 ```
+
 ## Przykłady Użycia
 
 ### Interpolacja Newtona
 
+```cpp
 #include "interpolation.h"
 
 vector<double> x = {1, 2, 4, 7};
@@ -98,9 +107,11 @@ vector<double> y = {3, 6, 12, 24};
 
 auto coeffs = computeNewtonCoefficients(x, y);
 double wynik = newtonInterpolation(5.0, x, coeffs);
+```
 
 ### Rozwiązywanie Układów Liniowych
 
+```cpp
 #include "linear_systems.h"
 
 vector<vector<double>> A = {{2, 1, -1}, {-3, -1, 2}, {-2, 1, 2}};
@@ -110,16 +121,20 @@ vector<vector<double>> L, U;
 luDecomposition(A, L, U);
 auto z = forwardSubstitution(L, b);
 auto rozwiazanie = backSubstitution(U, z);
+```
 
 ### Całkowanie Numeryczne
 
+```cpp
 #include "integration.h"
 
 auto funkcja = [](double x) { return cos(x * x); };
 double wynik = gaussLegendre(funkcja, 0.0, 1.0, 4);
+```
 
 ### Rozwiązywanie Równań Różniczkowych
 
+```cpp
 #include "ode_solver.h"
 
 double dydt(double t, double y) {
@@ -127,6 +142,7 @@ double dydt(double t, double y) {
 }
 
 auto rozwiazanie = rungeKutta4(dydt, 0.5, 0.0, 2.0, 10);
+```
 
 ## Testowanie
 
@@ -138,13 +154,14 @@ Sprawdzają poprawność działania algorytmów dla standardowych przypadków u�
 ### Testy Negatywne
 Sprawdzają reakcję algorytmów na przypadki brzegowe i potencjalne problemy numeryczne:
 
-- *Aproksymacja*: Test dla wielomianów wysokiego stopnia z małą liczbą punktów
-- *Całkowanie*: Test dla nieobsługiwanych rzędów kwadratury
-- *Interpolacja*: Test dla identycznych wartości węzłów
-- *Układy Liniowe*: Walidacja danych wejściowych i weryfikacja dokładności
-- *Newton-Raphson*: Test zbieżności dla małych pochodnych
-- *ODE*: Test stabilności dla dużych kroków czasowych
+- **Aproksymacja**: Test dla wielomianów wysokiego stopnia z małą liczbą punktów
+- **Całkowanie**: Test dla nieobsługiwanych rzędów kwadratury
+- **Interpolacja**: Test dla identycznych wartości węzłów
+- **Układy Liniowe**: Walidacja danych wejściowych i weryfikacja dokładności
+- **Newton-Raphson**: Test zbieżności dla małych pochodnych
+- **ODE**: Test stabilności dla dużych kroków czasowych
 
+```bash
 # Testowanie konkretnych modułów
 ./test_interpolation
 ./test_linear_systems
@@ -152,54 +169,59 @@ Sprawdzają reakcję algorytmów na przypadki brzegowe i potencjalne problemy nu
 ./test_integration
 ./test_ode_solver
 ./test_nonlinear
+```
 ## Dokumentacja API
 
 ### Moduł Interpolacji
 
-- computeNewtonCoefficients(x, y) - Oblicza współczynniki interpolacji Newtona
-- newtonInterpolation(x_val, x, coeffs) - Oblicza wartość interpolacji w danym punkcie
+- `computeNewtonCoefficients(x, y)` - Oblicza współczynniki interpolacji Newtona
+- `newtonInterpolation(x_val, x, coeffs)` - Oblicza wartość interpolacji w danym punkcie
 
 ### Moduł Układów Liniowych
 
-- luDecomposition(A, L, U) - Wykonuje dekompozycję LU macierzy A
-- forwardSubstitution(L, b) - Rozwiązuje Lz = b
-- backSubstitution(U, z) - Rozwiązuje Ux = z
+- `luDecomposition(A, L, U)` - Wykonuje dekompozycję LU macierzy A
+- `forwardSubstitution(L, b)` - Rozwiązuje Lz = b
+- `backSubstitution(U, z)` - Rozwiązuje Ux = z
 
 ### Moduł Całkowania
 
-- gaussLegendre(func, a, b, n) - Całkuje funkcję na [a,b] używając n-punktowej kwadratury Gaussa-Legendre'a
+- `gaussLegendre(func, a, b, n)` - Całkuje funkcję na [a,b] używając n-punktowej kwadratury Gaussa-Legendre'a
 
 ### Moduł Równań Różniczkowych
 
-- rungeKutta4(f, y0, t0, t_end, steps) - Rozwiązuje równanie różniczkowe y' = f(t,y) metodą RK4
+- `rungeKutta4(f, y0, t0, t_end, steps)` - Rozwiązuje równanie różniczkowe y' = f(t,y) metodą RK4
 
 ### Moduł Równań Nieliniowych
 
-- newtonAnalytical(f, df, x0, epsilon, max_iter) - Znajduje pierwiastek metodą Newtona-Raphsona
+- `newtonAnalytical(f, df, x0, epsilon, max_iter)` - Znajduje pierwiastek metodą Newtona-Raphsona
 
 ### Moduł Aproksymacji
 
-- computeLeastSquares(x, y, degree) - Oblicza współczynniki wielomianu
-- evaluatePolynomial(x, coeffs) - Oblicza wartość wielomianu w danym punkcie
+- `computeLeastSquares(x, y, degree)` - Oblicza współczynniki wielomianu
+- `evaluatePolynomial(x, coeffs)` - Oblicza wartość wielomianu w danym punkcie
 
 ## Autorzy
 
-- *Urszula Pyka* 
-- *Aleksandra Przewoznik* 
+- **Urszula Pyka** 
+- **Aleksandra Przewoznik** 
 
-*Grupa:* 3  
-*Semestr:* Letni 2025  
-*Przedmiot:* Metody Numeryczne
+**Grupa:** 3  
+**Semestr:** Letni 2025  
+**Przedmiot:** Metody Numeryczne
 
 ## Rozwiązywanie Problemów
 
 ### Najczęstsze Problemy
 
-*Problem:* Błąd kompilacji związany z C++17
+**Problem:** Błąd kompilacji związany z C++17
+```bash
 # Rozwiązanie: Upewnij się, że używasz odpowiedniej wersji kompilatora
 g++ --version  # Sprawdź wersję (wymagana 7+)
+```
 
-*Problem:* CMake nie znajduje plików
+**Problem:** CMake nie znajduje plików
+```bash
 # Rozwiązanie: Upewnij się, że jesteś w katalogu build
 mkdir build && cd build
 cmake ..
+```
