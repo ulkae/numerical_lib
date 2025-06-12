@@ -72,7 +72,7 @@ make test
 | Równania Nieliniowe | Metoda Newtona-Raphsona | Znajdowanie pierwiastków z analitycznymi pochodnymi |
 
 ## Struktura Projektu
-
+```
 numerical_lib/
 ├── include/              # Pliki nagłówkowe (*.h)
 │   ├── approximation.h
@@ -86,7 +86,7 @@ numerical_lib/
 ├── examples/             # Przykłady użycia
 ├── CMakeLists.txt        # Konfiguracja budowania
 └── README.md             # Ten plik
-
+```
 ## Przykłady Użycia
 
 ### Interpolacja Newtona
