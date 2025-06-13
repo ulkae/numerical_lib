@@ -4,14 +4,6 @@
 
 Kompleksowa biblioteka metod numerycznych zaimplementowana w C++17. Projekt został stworzony w ramach przedmiotu **Metody Numeryczne** i oferuje wydajne implementacje klasycznych algorytmów numerycznych. 
 
-## Funkcjonalności
-
-- Modularny Design: Każdy algorytm jest samodzielny i może być używany niezależnie
-- Wysoka Wydajność: Zoptymalizowane implementacje w C++17
-- Dokładnie Przetestowane: Kompleksowe testy jednostkowe dla wszystkich modułów
-- Edukacyjne: Czytelny kod z obszerną dokumentacją i przykładami
-- Łatwa Integracja: System budowania oparty na CMake
-
 ## Szybki Start
 
 ### Wymagania
