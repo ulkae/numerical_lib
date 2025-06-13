@@ -75,7 +75,7 @@ make test
 | Aproksymacja | Metoda Najmniejszych Kwadratów | Dopasowywanie krzywych wielomianowych |
 | Całkowanie | Kwadratura Gaussa-Legendre'a | Całkowanie numeryczne (n=2,3,4) |
 | Równania Różniczkowe | Runge-Kutta 4. rzędu | Rozwiązywanie zwyczajnych równań różniczkowych |
-| Równania Nieliniowe | Metoda Newtona-Raphsona | Znajdowanie pierwiastków z analitycznymi pochodnymi |
+| Równania Nieliniowe | Metoda Newtona | Znajdowanie pierwiastków z analitycznymi pochodnymi |
 
 ## Struktura Projektu
 
