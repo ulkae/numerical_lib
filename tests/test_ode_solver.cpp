@@ -4,6 +4,8 @@
 #include <iostream>
 using namespace std;
 
+//funkcja testowa: rownanie rozniczkowe y' = -2y + 1
+//rozwiazanie analityczne: y(t) = 0.5 + (y0 - 0.5)*exp(-2t)
 double f_good(double t, double y) {
     return -2 * y + 1;  // y' = -2y + 1
 }
@@ -16,6 +18,7 @@ void testPositiveCase() {
     int steps = 10;
     vector<double> wyniki = rungeKutta4(f_good, y0, t0, t_end, steps);
 
+    //porownanie z rozwiazaniem analitycznym
     double y_oczekiwane = 0.5 * (1 - exp(-1.0)); // Rozwiazanie analityczne
     double y_liczone = wyniki.back();
     assert(abs(y_liczone - y_oczekiwane) < 1e-3);
@@ -24,6 +27,7 @@ void testPositiveCase() {
 
 void testNegativeCase() {
     cout << "Test negatywny - bardzo malo krokow..." << endl;
+    //warunki testujace stabilnosc: duzy przedzial czasowy z malym podzialam
     double y0 = 1.0;
     double t0 = 0.0;
     double t_end = 10.0;  // Duzy przedzial
@@ -35,7 +39,7 @@ void testNegativeCase() {
         cout << "Rozmiar wyniku: " << wyniki.size() << endl;
         cout << "Koncowa wartosc: " << wyniki.back() << endl;
 
-        // Sprawdz czy wynik jest rozumny
+       //sprawdzenie stabilnosci numerycznej
         if (abs(wyniki.back()) > 1e10) {
             cout << "UWAGA: Wynik bardzo duzy - moze byc niestabilny!" << endl;
         }
