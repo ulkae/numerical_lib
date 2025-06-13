@@ -6,13 +6,14 @@ void luDecomposition(const vector<vector<double>>& A, vector<vector<double>>& L,
     U.assign(n, vector<double>(n, 0));
 
     for (int k = 0; k < n; ++k) {
+        //obliczanie elementow macierzy U w k-tym wierszu
         for (int j = k; j < n; ++j) {
             double sum = 0;
             for (int s = 0; s < k; ++s)
                 sum += L[k][s] * U[s][j];
             U[k][j] = A[k][j] - sum;
         }
-
+       //obliczanie elementow macierzy L w k-tej kolumnie
         for (int i = k; i < n; ++i) {
             if (i == k)
                 L[i][k] = 1.0;
@@ -29,11 +30,13 @@ void luDecomposition(const vector<vector<double>>& A, vector<vector<double>>& L,
 vector<double> forwardSubstitution(const vector<vector<double>>& L, const vector<double>& b) {
     int n = L.size();
     vector<double> z(n);
+    //rozwiazywanie od pierwszego do ostatniego elementu
     for (int i = 0; i < n; ++i) {
         z[i] = b[i];
+        //odejmowanie wczesniej obliczonych wartosci
         for (int j = 0; j < i; ++j)
             z[i] -= L[i][j] * z[j];
-        z[i] /= L[i][i];
+        z[i] /= L[i][i]; //dzielenie przez element przekatny
     }
     return z;
 }
