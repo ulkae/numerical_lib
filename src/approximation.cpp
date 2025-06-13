@@ -1,6 +1,7 @@
 #include "approximation.h"
 #include <cmath>
 
+//obliczanie wspolczynnikÃ³w wielomianu
 vector<double> computeLeastSquares(const vector<double>& x, const vector<double>& y, int degree) {
     int n = x.size();
     int m = degree + 1;
@@ -8,7 +9,7 @@ vector<double> computeLeastSquares(const vector<double>& x, const vector<double>
     vector<double> B(m, 0.0);
     vector<double> coeffs(m, 0.0);
 
-    // Macierz A (iloczyny potêg x)
+    // Macierz A (iloczyny potÃªg x)
     for (int i = 0; i < m; ++i) {
         for (int j = 0; j < m; ++j) {
             for (int k = 0; k < n; ++k)
@@ -22,7 +23,7 @@ vector<double> computeLeastSquares(const vector<double>& x, const vector<double>
             B[i] += y[k] * pow(x[k], i);
     }
 
-    // Rozwi¹zywanie uk³adu równañ A * coeffs = B (eliminacja Gaussa)
+    // Rozwiazywanie ukladu rÃ³wnaÃ± A * coeffs = B (eliminacja Gaussa)
     for (int i = 0; i < m; ++i) {
         // Maksymalny element w kolumnie
         int maxRow = i;
@@ -40,7 +41,7 @@ vector<double> computeLeastSquares(const vector<double>& x, const vector<double>
             B[k] -= factor * B[i];
         }
     }
-
+//Podstawianie wstecz
     for (int i = m - 1; i >= 0; --i) {
         coeffs[i] = B[i];
         for (int j = i + 1; j < m; ++j)
@@ -50,7 +51,7 @@ vector<double> computeLeastSquares(const vector<double>& x, const vector<double>
 
     return coeffs;
 }
-
+//obliczanie wartosci wielomianu w zadanym punkcie
 double evaluatePolynomial(double x, const vector<double>& coeffs) {
     double result = 0.0;
     double xi = 1.0;
