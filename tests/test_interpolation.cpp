@@ -6,9 +6,13 @@ using namespace std;
 
 void testPositiveCase() {
     cout << "Test pozytywny - interpolacja liniowa..." << endl;
+
+    //punkty lezace na prostej y = x + 1: (0,1), (1,2), (2,3)
     vector<double> x = { 0, 1, 2 };
     vector<double> y = { 1, 2, 3 };
     vector<double> coeffs = computeNewtonCoefficients(x, y);
+
+    //test interpolacji w punkcie x=1.5 (oczekiwana wartosc y=2.5)
     double result = newtonInterpolation(1.5, x, coeffs);
     double expected = 2.5;
     assert(abs(result - expected) < 1e-6);
@@ -17,7 +21,8 @@ void testPositiveCase() {
 
 void testNegativeCase() {
     cout << "Test negatywny - identyczne wartosci x..." << endl;
-    vector<double> x = { 1, 1, 2 };  // Dwie identyczne wartosci x!
+    //dane z powtorzona wspolrzedna x=1 (powoduje dzielenie przez zero w dzielonych roznicach)
+    vector<double> x = { 1, 1, 2 };  
     vector<double> y = { 3, 5, 7 };
 
     try {
