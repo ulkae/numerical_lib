@@ -30,7 +30,7 @@ void testNegativeCase() {
     
 //proba aproksymacji wielomianem stopnia 5 (wymaga 6 wspolczynnikow) dla 2 punktow
     try {
-        vector<double> coeffs = computeLeastSquares(x, y, 5); // Stopien 5 dla 2 punktow!
+        vector<double> coeffs = computeLeastSquares(x, y, 5); 
         cout << "UWAGA: Algorytm nie wykryl problemu ze stopniem wielomianu" << endl;
         cout << "Otrzymano " << coeffs.size() << " wspolczynnikow" << endl;
     }
