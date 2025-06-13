@@ -1,7 +1,8 @@
 ﻿#include "approximation.h"
 #include <iostream>
 using namespace std;
-
+//program aproksymuje 5 punktow wielomianem stopnia 2 i przewiduje wartosc w x=2.5
+ 
 int main() {
     vector<double> x = { 0, 1, 2, 3, 4 };
     vector<double> y = { 1, 2.1, 4.5, 7.8, 11.0 };
