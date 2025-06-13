@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-
+//znajdowanie pierwiastka rownania x^3-x-2=0
 double f(double x) { return x * x * x - x - 2; }
 double df(double x) { return 3 * x * x - 1; }
 
