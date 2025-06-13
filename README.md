@@ -70,7 +70,7 @@ make test
 
 | Moduł | Algorytm | Opis |
 |-------|----------|------|
-| Interpolacja | Dzielone Różnice Newtona | Interpolacja wielomianowa przez zadane punkty |
+| Interpolacja | Metoda Newtona | Interpolacja wielomianowa przez zadane punkty |
 | Układy Liniowe | Dekompozycja LU | Rozwiązywanie układów równań liniowych |
 | Aproksymacja | Metoda Najmniejszych Kwadratów | Dopasowywanie krzywych wielomianowych |
 | Całkowanie | Kwadratura Gaussa-Legendre'a | Całkowanie numeryczne (n=2,3,4) |
