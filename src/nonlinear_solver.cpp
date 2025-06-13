@@ -3,10 +3,10 @@
 #include <iostream>
 
 using namespace std;
-
+//znajduje pierwiastek rownania f(x)=0 metoda Newtona z analityczna pochodna
 double newtonAnalytical(function<double(double)> f, function<double(double)> df, double x0, double epsilon, int max_iter) {
     double x = x0;
-
+//iteracje metody
     for (int i = 0; i < max_iter; ++i) {
         double fx = f(x);
         double dfx = df(x);
@@ -15,7 +15,7 @@ double newtonAnalytical(function<double(double)> f, function<double(double)> df,
             cerr << "Pochodna bliska zeru. Przerwanie." << endl;
             return NAN;
         }
-
+//obliczenie nowego przyblizenia pierwiastk
         double x_new = x - fx / dfx;
 
         if (abs(x_new - x) < epsilon)
