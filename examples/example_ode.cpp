@@ -2,6 +2,7 @@
 #include <iostream>
 using namespace std;
 
+//rozwiazywanie rownania rozniczkowego y'=y-t^2+1
 double dydt(double t, double y) {
     return y - t * t + 1;  // y' = y - t^2 + 1
 }
