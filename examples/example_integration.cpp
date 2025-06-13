@@ -6,7 +6,8 @@
 #endif
 using namespace std;
 
-//obliczanie calki funkcji cos(x^2), Program oblicza pole pod krzywa od 0 do 1 metoda Gaussa-Legendre'a
+//obliczanie calki funkcji cos(x^2)
+//program oblicza pole pod krzywa od 0 do 1 metoda Gaussa-Legendre'a
 double f(double x) {
     return cos(x * x);
 }
