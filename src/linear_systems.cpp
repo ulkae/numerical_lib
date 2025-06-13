@@ -1,5 +1,5 @@
 #include "linear_systems.h"
-
+//Dekompozycja LU macierzy A na macierz dolna trojkatna L i gorna trojkatna U
 void luDecomposition(const vector<vector<double>>& A, vector<vector<double>>& L, vector<vector<double>>& U) {
     int n = A.size();
     L.assign(n, vector<double>(n, 0));
