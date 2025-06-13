@@ -1,5 +1,5 @@
 #include "interpolation.h"
-
+//Oblicza wspolczynniki interpolacji Newtona
 vector<double> computeNewtonCoefficients(const vector<double>& x, const vector<double>& y) {
     int n = x.size();
     vector<double> coefficients = y;
@@ -13,7 +13,7 @@ vector<double> computeNewtonCoefficients(const vector<double>& x, const vector<d
     return coefficients;
 
 }
-
+//Oblicza wartosc interpolacji w zadanym punkcie uzywajac schematu Hornera
 double newtonInterpolation(double x_val, const vector<double>& x, const vector<double>& coefficients) {
     double result = coefficients.back();
     for (int i = coefficients.size() - 2; i >= 0; i--) {
