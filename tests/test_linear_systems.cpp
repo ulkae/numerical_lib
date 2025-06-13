@@ -6,6 +6,8 @@ using namespace std;
 
 void testPositiveCase() {
     cout << "Test pozytywny - uklad 2x2..." << endl;
+
+    //uklad rownan: 2x + y = 3, 8x + 7y = 23
     vector<vector<double>> A = { {2, 1}, {8, 7} };
     vector<double> b = { 3, 23 };
     vector<vector<double>> L, U;
@@ -13,7 +15,7 @@ void testPositiveCase() {
     vector<double> z = forwardSubstitution(L, b);
     vector<double> x = backSubstitution(U, z);
 
-    // Poprawione asercje z poprawnymi wartoœciami rozwi¹zania
+    //sprawdzenie poprawnosci rozwiazania: x = [-1/3, 11/3]    
     assert(abs(x[0] + 1.0 / 3.0) < 1e-6);
     assert(abs(x[1] - 11.0 / 3.0) < 1e-6);
 
@@ -22,23 +24,23 @@ void testPositiveCase() {
 
 void testNegativeCase() {
     cout << "Test negatywny - sprawdzenie stabilnosci..." << endl;
-
+//sprawdza czy algorytm dziala poprawnie i czy wyniki sa dokladne dla normalnych macierzy
     vector<vector<double>> A = { {3, 2}, {1, 4} };
     vector<double> b = { 7, 9 };
 
     try {
         vector<vector<double>> L, U;
         luDecomposition(A, L, U);
-
+//sprawdzenie struktury dekompozycji LU
         bool dekompozycja_ok = true;
-
+//L powinna miec jedynki na przekatnej
         for (int i = 0; i < L.size(); i++) {
             if (abs(L[i][i] - 1.0) > 1e-10) {
                 dekompozycja_ok = false;
                 break;
             }
         }
-
+ //U nie powinna miec zer na przekatnej
         for (int i = 0; i < U.size(); i++) {
             if (abs(U[i][i]) < 1e-12) {
                 dekompozycja_ok = false;
@@ -56,7 +58,7 @@ void testNegativeCase() {
             vector<double> x = backSubstitution(U, z);
 
             cout << "Rozwiazanie: x[0] = " << x[0] << ", x[1] = " << x[1] << endl;
-
+//test dokladnosci przez podstawienie (Ax = b?)
             double blad1 = abs(A[0][0] * x[0] + A[0][1] * x[1] - b[0]);
             double blad2 = abs(A[1][0] * x[0] + A[1][1] * x[1] - b[1]);
 
