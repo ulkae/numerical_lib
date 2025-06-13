@@ -2,6 +2,7 @@
 #include <iostream>
 using namespace std;
 
+//program rozwiazuje system Ax=b metoda dekompozycji LU
 int main() {
     vector<vector<double>> A = {
         {2, 1, -1},
@@ -16,7 +17,7 @@ int main() {
     auto z = forwardSubstitution(L, b);
     auto x = backSubstitution(U, z);
 
-    cout << "Rozwi¹zanie uk³adu 3x3:" << endl;
+    cout << "RozwiÂ¹zanie ukÂ³adu 3x3:" << endl;
     for (double val : x) cout << val << " ";
     cout << endl;
 
